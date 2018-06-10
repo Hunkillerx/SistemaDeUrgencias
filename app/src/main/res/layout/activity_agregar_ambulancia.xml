@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.AgregarAmbulancia">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Ambulancia "
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Codigo"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="210dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paciente"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <Switch
+        android:id="@+id/estadoSw"
+        style="@android:style/Widget.CompoundButton.Switch"
+        android:layout_width="51dp"
+        android:layout_height="37dp"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/codigoAmb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="150dp" />
+
+    <Button
+        android:id="@+id/agregarPacAMb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="agregar paciente ambulancia"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="349dp" />
+
+</android.support.constraint.ConstraintLayout>
