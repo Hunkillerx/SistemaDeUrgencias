@@ -39,13 +39,6 @@
         tools:layout_editor_absoluteX="42dp"
         tools:layout_editor_absoluteY="320dp" />
 
-    <Switch
-        android:id="@+id/estadoSw"
-        style="@android:style/Widget.CompoundButton.Switch"
-        android:layout_width="51dp"
-        android:layout_height="37dp"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="250dp" />
 
     <EditText
         android:id="@+id/codigoAmb"
