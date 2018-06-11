@@ -249,12 +249,20 @@ object SistemaDeEmergencias{
 
         val menordis=Int.MAX_VALUE
         var ambulanciaCerca=Ambulancia()
+        var bandera = false
 
         for (i in 0 until ambulancias.size){
-            if (!ambulancias[i].darEstado() && distmanhatan(accidentado.darUbicacion(),ambulancias[i].darUbicacion())<menordis){
+            if (!ambulancias[i].darEstado() && distmanhatan(accidentado.darUbicacion(),
+                            ambulancias[i].darUbicacion())<menordis){
                     ambulanciaCerca = ambulancias[i]
+                    bandera = true
+
                 }
             }
+        if (bandera == false){
+            return null
+        }
+
         return ambulanciaCerca
     }
 
@@ -268,7 +276,7 @@ object SistemaDeEmergencias{
         }
     }
 
-    //aqui tambien cambie la ubicacion de la ambulancia para poner su ubicacion cuando recoja la
+    //aqui tambien cambie la ubicacion de la ambulancia para poner su ubicacion cuando recoja al
     //accidentado
     fun asignaraccidentado(accidentado: Accidentado,ambulancia: Ambulancia){
         require(ambulancia.darEstado())
@@ -283,6 +291,7 @@ object SistemaDeEmergencias{
 
         var menordis:Int= Int.MAX_VALUE
         var hospitalcerca= Hospital()
+        var bandera = false
 
         for (i in 0 until hospitales.size){
 
@@ -293,7 +302,11 @@ object SistemaDeEmergencias{
 
                 menordis=distmanhatan(hospitales[i].darUbicacion(),ambulancia.darUbicacion())
                 hospitalcerca=hospitales[i]
+                bandera = true
             }
+        }
+        if (bandera == false){
+            return null
         }
         return hospitalcerca
     }
