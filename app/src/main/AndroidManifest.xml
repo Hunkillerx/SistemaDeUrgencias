@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".vista.AgregarHospital" />
-        <activity android:name=".vista.AgregarAmbulancia" />
-        <activity android:name=".vista.AgregarAccidentado"></activity>
+        <activity android:name=".vista.AgregarAccidentado" />
+        <activity android:name=".vista.MostrarAmbulancias" />
+        <activity android:name=".vista.MostrarHospitales"></activity>
     </application>
 
 </manifest>

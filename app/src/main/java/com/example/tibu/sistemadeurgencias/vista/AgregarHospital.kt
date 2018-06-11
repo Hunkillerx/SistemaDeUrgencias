@@ -8,18 +8,19 @@ import android.widget.Toast
 import com.example.tibu.sistemadeurgencias.R
 import com.example.tibu.sistemadeurgencias.mundo.SistemaDeEmergencias
 
+
 class AgregarHospital : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_hospital)
 
-        val botonRegresar = findViewById<Button>(R.id.regresarAcc)
+        val botonRegresar = findViewById<Button>(R.id.regresarhosp)
         botonRegresar.setOnClickListener {
             finish()
         }
 
-        val botonAgregar = findViewById<Button>(R.id.agregarAcc)
+        val botonAgregar = findViewById<Button>(R.id.agregarHosp)
         botonAgregar.setOnClickListener {
             val cod = findViewById<EditText>(R.id.codAmb)
             val nom = findViewById<EditText>(R.id.nomAmb)
@@ -41,8 +42,10 @@ class AgregarHospital : AppCompatActivity() {
                     throw Exception("el hospital con codigo $cod ya existe")
                 } else {
                     SistemaDeEmergencias.agregarHospital(cod,nom,acc1,acc2,x,y)
+                    /*
                     Toast.makeText(this,
-                            "cuenta agregada con axito. hay ${SistemaDeEmergencias.cantidadAccidentados}", Toast.LENGTH_LONG).show()
+                            "cuenta agregada con axito. hay ${SistemaDeEmergencias.cantidadhospitales}", Toast.LENGTH_LONG).show()
+                            */
                 }
             }catch (e:Exception){}
         }

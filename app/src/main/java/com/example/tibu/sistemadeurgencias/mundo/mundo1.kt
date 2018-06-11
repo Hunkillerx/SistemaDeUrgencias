@@ -330,6 +330,22 @@ object SistemaDeEmergencias{
             }
         }
     }
+
+    fun obtenerCodigosAmbulancias():Array<Int>{
+        val resultado = Array<Int>(ambulancias.size){0}
+        for (i in 0 until ambulancias.size){
+            resultado[i] = ambulancias[i].darCodigo()
+        }
+        return resultado
+    }
+
+    fun obtenerNombresHospitales():Array<String>{
+        val resultado = Array<String>(hospitales.size){""}
+        for (i in 0 until hospitales.size){
+            resultado[i] = hospitales[i].darNombre()
+        }
+        return resultado
+    }
 }
 
 
