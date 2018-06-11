@@ -22,10 +22,5 @@ class ActivitdadPrincipal : AppCompatActivity() {
             val intent= Intent(this, AgregarAmbulancia::class.java)
             startActivity(intent)
         }
-        val botonAgregarAccidentado = findViewById<Button>(R.id.agregarAccidentado)
-        botonAgregarAccidentado.setOnClickListener{
-            val intent= Intent(this, AgregarAccidentado::class.java)
-            startActivity(intent)
-        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.tibu.sistemadeurgencias.mundo
 
 import ean.collections.*
+import ean.collections.test.a
 
 class Punto:Comparable<Punto>{
     //atributos
@@ -162,7 +163,7 @@ class Hospital:Comparable<Hospital>{
         return bandera
     }
 
-    fun existeacc(acc:String):Boolean{
+    fun atiendeeacc(acc:String):Boolean{
         if (acc==acc1 || acc==acc2){
             return true
         }
@@ -174,6 +175,16 @@ class Hospital:Comparable<Hospital>{
             accidentados.add(accidentado)
         }
     }
+
+    //elimina al paciente que ya esta "curado"
+    fun darDeAlta(nombre: String){
+        for(i in 0 until accidentados.size){
+            if(accidentados[i].darNombre()==nombre){
+                accidentados.remove(i)
+            }
+        }
+    }
+
 
     //comparador
     override fun compareTo(other: Hospital): Int {
@@ -209,6 +220,16 @@ object SistemaDeEmergencias{
         return bandera
     }
 
+    fun buscarhospital(codigo: Int):Hospital{
+        var hospital=Hospital()
+        for (i in 0 until hospitales.size){
+            if (hospitales[i].darCodigo()==codigo){
+                hospital= hospitales[i]
+            }
+        }
+        return hospital
+    }
+
     fun agregarAmbulancia(codigo: Int,x:Int,y:Int){
         if (!existeAbulancia(codigo)) {
             val ambulancia = Ambulancia(codigo, Punto(x, y))
@@ -223,7 +244,9 @@ object SistemaDeEmergencias{
         }
     }
 
+    //con distancia manhatan se mira que ambulancia esta mas cerca falta devolver null en caso que no exista
     fun ambulanciaCercana(accidentado: Accidentado):Ambulancia?{
+
         val menordis=Int.MAX_VALUE
         var ambulanciaCerca=Ambulancia()
 
@@ -235,29 +258,62 @@ object SistemaDeEmergencias{
         return ambulanciaCerca
     }
 
+    //busco el codigo de la ambulancia y ya encontrada miro que este vacia cambia la ubicacion de esta
     fun actualizarubicacion(codigo: Int,ubicacion: Punto){
-        var ambulancia=Ambulancia()
+
         for (i in 0 until ambulancias.size){
-            if (ambulancias[i].darCodigo()==codigo){
-                ambulancia= ambulancias[i]
+            if (ambulancias[i].darCodigo()==codigo && !ambulancias[i].darEstado()){
+                ambulancias[i].cambiarUbicacion(ubicacion)
             }
-        }
-        if (!ambulancia.darEstado()){
-            ambulancia.cambiarUbicacion(ubicacion)
         }
     }
 
+    //aqui tambien cambie la ubicacion de la ambulancia para poner su ubicacion cuando recoja la
+    //accidentado
     fun asignaraccidentado(accidentado: Accidentado,ambulancia: Ambulancia){
         require(ambulancia.darEstado())
         ambulancia.recibirAccidentado(accidentado)
+        actualizarubicacion(ambulancia.darCodigo(),accidentado.darUbicacion())
     }
 
-    fun buscarHospital(ambulancia: Ambulancia):Hospital{
-        require(ambulancia.darEstado())
-        for (i in 0 until hospitales.size){
-            if (ambulancia.darPaciente()!!.darAccidente()== hospitales[i].darPrimerAcc() ||
-                    ambulancia.darPaciente()!!.darAccidente()== hospitales[i].darSegundoAcc()){
 
+    //falta poner el null en el caso de que no haya ninguno
+    fun buscarHospital(ambulancia: Ambulancia):Hospital?{
+        require(ambulancia.darEstado())
+
+        var menordis:Int= Int.MAX_VALUE
+        var hospitalcerca= Hospital()
+
+        for (i in 0 until hospitales.size){
+
+            if ((ambulancia.darPaciente()!!.darAccidente()== hospitales[i].darPrimerAcc() ||
+                            ambulancia.darPaciente()!!.darAccidente()== hospitales[i].darSegundoAcc()) &&
+                            distmanhatan(hospitales[i].darUbicacion(),ambulancia.darUbicacion())<menordis &&
+                            !hospitales[i].estaEnHospi(ambulancia.darPaciente()!!.darNombre())){
+
+                menordis=distmanhatan(hospitales[i].darUbicacion(),ambulancia.darUbicacion())
+                hospitalcerca=hospitales[i]
+            }
+        }
+        return hospitalcerca
+    }
+
+    fun llegadaDeAmbuHospi(ambulancia: Ambulancia){
+        require(ambulancia.darEstado())
+
+        val hospitaldestino = buscarHospital(ambulancia)
+
+        hospitaldestino!!.ingresarAlHospi(ambulancia.darPaciente()!!)
+        ambulancia.vaciarAmbulancia()
+        actualizarubicacion(ambulancia.darCodigo(),hospitaldestino.darUbicacion())
+    }
+
+    fun darDeAlta(codigo: Int,nombre: String){
+        require(existeHospital(codigo) && buscarhospital(codigo).estaEnHospi(nombre))
+        var hospital=Hospital()
+        for (i in 0 until hospitales.size){
+            if (hospitales[i].darCodigo()==codigo){
+                hospitales[i].darDeAlta(nombre)
             }
         }
     }
