@@ -342,6 +342,21 @@ object SistemaDeEmergencias {
     var cantidadAmbulancias = ambulancias.size
     var cantidadHospitales = hospitales.size
 
+    fun obtenerUbicacionesAmbulancias():Array<String>{
+        val resultado = Array<String>(ambulancias.size){""}
+        for (i in 0 until ambulancias.size){
+            resultado[i] = ambulancias[i].darUbicacion().darcalle().toString()+
+                    ambulancias[i].darUbicacion().darcarrera().toString()
+        }
+        return resultado
+    }
+    fun obtenerAmbulancias():Array<Ambulancia>{
+        val resultado = Array<Ambulancia>(ambulancias.size){null!!}
+        for (i in 0 until ambulancias.size){
+            resultado[i] = ambulancias[i]
+        }
+        return resultado
+    }
     fun obtenerCodigosAmbulancias(): Array<Int> {
         val resultado = Array<Int>(ambulancias.size) { 0 }
         for (i in 0 until ambulancias.size) {

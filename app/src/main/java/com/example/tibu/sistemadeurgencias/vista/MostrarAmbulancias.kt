@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.tibu.sistemadeurgencias.R
+import com.example.tibu.sistemadeurgencias.adapters.AmbulanciaAdapter
 import com.example.tibu.sistemadeurgencias.mundo.SistemaDeEmergencias
 
 class MostrarAmbulancias : AppCompatActivity() {
@@ -15,9 +16,19 @@ class MostrarAmbulancias : AppCompatActivity() {
 
         val lv = findViewById<ListView>(R.id.lista_ambulancias)
         val arregloAmbulancias = SistemaDeEmergencias.obtenerCodigosAmbulancias()
+        val arregloAmbulancias2 = SistemaDeEmergencias.obtenerAmbulancias()
+
         val adaptAmbulancias = ArrayAdapter(this,
                 android.R.layout.simple_list_item_1,
                 arregloAmbulancias)
         lv.adapter = adaptAmbulancias
     }
-}
+/*
+        var listView = findViewById<ListView>(R.id.lista_ambulancias)
+        var adapter = AmbulanciaAdapter(this,arregloAmbulancias)
+
+        listView?.adapter = adapter
+        adapter?.notifyDataSetChanged()
+        */
+    }
+
