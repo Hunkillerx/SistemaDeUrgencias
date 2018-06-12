@@ -7,17 +7,17 @@ import android.widget.ListView
 import com.example.tibu.sistemadeurgencias.R
 import com.example.tibu.sistemadeurgencias.mundo.SistemaDeEmergencias
 
-class MostrarHospitales : AppCompatActivity() {
+class MostrarAmbulanciasOcupadas : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mostrar_hospitales)
+        setContentView(R.layout.activity_mostrar_ambulancias_ocupadas)
 
-        val lv = findViewById<ListView>(R.id.lista_hospitales)
-        val arregloHospitales = SistemaDeEmergencias.obtenerNombresHospitales()
-        val adaptHospitales = ArrayAdapter(this,
+        val lv = findViewById<ListView>(R.id.lista_ambulancias_ocupadas)
+        val arregloAmbulanciasOcupadas = SistemaDeEmergencias.obtenerAmbulanciasOcupadas()
+        val adaptAmbulanciasOcupadas = ArrayAdapter(this,
                 android.R.layout.simple_list_item_1,
-                arregloHospitales)
-        lv.adapter = adaptHospitales
+                arregloAmbulanciasOcupadas)
+        lv.adapter = adaptAmbulanciasOcupadas
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.tibu.sistemadeurgencias.R
 
 import com.example.tibu.sistemadeurgencias.mundo.SistemaDeEmergencias
+import java.lang.Exception
 
 class AgregarAmbulancia : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class AgregarAmbulancia : AppCompatActivity() {
         val botonAgregar = findViewById<Button>(R.id.agregarAmb)
         botonAgregar.setOnClickListener {
 
-            val cod = findViewById<EditText>(R.id.codAmb)
+            val cod = findViewById<EditText>(R.id.codigoAmb)
             val calleAmb = findViewById<EditText>(R.id.calleAmb)
             val carreraAmb = findViewById<EditText>(R.id.carreraAmb)
 
@@ -34,12 +35,11 @@ class AgregarAmbulancia : AppCompatActivity() {
 
 
                 if (SistemaDeEmergencias.existeAbulancia(cod)) {
-                    throw Exception("el hospital con codigo $cod ya existe")
+                    throw Exception("la ambulancia con codigo $cod ya existe")
                 } else {
                     SistemaDeEmergencias.agregarAmbulancia(cod,calle,carrera)
-                    /*Toast.makeText(this,
-                            "cuenta agregada con axito. hay ${SistemaDeEmergencias.cantidadambulancias}", Toast.LENGTH_LONG).show()
-                            */
+                    Toast.makeText(this,
+                            "cuenta agregada con exito. hay ${SistemaDeEmergencias.cantidadAmbulancias}", Toast.LENGTH_LONG).show()
                 }
             }catch (e:Exception){}
         }

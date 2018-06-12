@@ -11,11 +11,11 @@
         android:layout_width="184dp"
         android:layout_height="46dp"
         android:text="agregar Hospital"
-        app:layout_constraintBottom_toTopOf="@+id/agregarAccidentado"
+        app:layout_constraintBottom_toTopOf="@+id/agregarAmbulancia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/agregarAccidentado" />
 
     <Button
         android:id="@+id/agregarAmbulancia"
@@ -24,21 +24,20 @@
         android:text="agregar Ambulancia"
         app:layout_constraintBottom_toTopOf="@+id/verTodasAmbulancias"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agregarAccidentado"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintTop_toBottomOf="@+id/agregarHospital" />
 
     <Button
         android:id="@+id/agregarAccidentado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="agregar Accidentado"
-        app:layout_constraintBottom_toTopOf="@+id/agregarAmbulancia"
+        app:layout_constraintBottom_toTopOf="@+id/agregarHospital"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agregarHospital" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/verTodasAmbulancias"
@@ -54,12 +53,56 @@
     <Button
         android:id="@+id/verTodosHospitales"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Ver todos los hospitales"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ver_pacientes_hospital"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verTodasAmbulancias" />
+
+    <Button
+        android:id="@+id/ver_pacientes_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Pacientes de un hospital"
+        app:layout_constraintBottom_toTopOf="@+id/verAmbulanciasLibres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verTodosHospitales" />
+
+    <Button
+        android:id="@+id/verAmbulanciasLibres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver Ambulancias libres"
+        app:layout_constraintBottom_toTopOf="@+id/verAmbulanciasOcupadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ver_pacientes_hospital" />
+
+    <Button
+        android:id="@+id/verAmbulanciasOcupadas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver ambulancias ocupadas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verAmbulanciasLibres" />
+
+    <Button
+        android:id="@+id/info_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver infor hospital"
+        app:layout_constraintBottom_toTopOf="@+id/verTodasAmbulancias"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/agregarAmbulancia"
+        app:layout_constraintTop_toBottomOf="@+id/agregarHospital" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".vista.AgregarHospital">
 
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
@@ -25,19 +26,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="7dp"
         android:text="Codigo"
-        app:layout_constraintBottom_toTopOf="@+id/codAmb"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/codhosp"
+        app:layout_constraintEnd_toStartOf="@+id/textView9" />
 
     <EditText
-        android:id="@+id/nomAmb"
+        android:id="@+id/nomhosp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
@@ -45,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Nombre"
-        app:layout_constraintBottom_toTopOf="@+id/nomAmb"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/nomhosp"
+        app:layout_constraintStart_toStartOf="@+id/codhosp" />
 
     <TextView
         android:id="@+id/textView12"
@@ -54,8 +56,8 @@
         android:layout_height="15dp"
         android:layout_marginBottom="8dp"
         android:text="Tipo de Acidente 1"
-        app:layout_constraintBottom_toTopOf="@+id/acc1Amb"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/acc1hosp"
+        app:layout_constraintStart_toStartOf="@+id/nomhosp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -63,11 +65,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Tipo De Accidente 2"
-        app:layout_constraintBottom_toTopOf="@+id/acc2Amb"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/acc2hosp"
+        app:layout_constraintStart_toStartOf="@+id/acc1hosp" />
 
     <EditText
-        android:id="@+id/acc1Amb"
+        android:id="@+id/acc1hosp"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginBottom="8dp"
@@ -75,10 +77,10 @@
         android:inputType="textPersonName"
         android:text="accidente1"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView12" />
 
     <EditText
-        android:id="@+id/acc2Amb"
+        android:id="@+id/acc2hosp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -86,7 +88,7 @@
         android:inputType="textPersonName"
         android:text="accidente2"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView14"
@@ -94,52 +96,57 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Ubicacion"
-        app:layout_constraintBottom_toTopOf="@+id/YAmb"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/carrerahosp"
+        app:layout_constraintStart_toStartOf="@+id/acc2hosp" />
 
     <EditText
-        android:id="@+id/XAmb"
+        android:id="@+id/callehosp"
         android:layout_width="86dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintBottom_toTopOf="@+id/regresarhosp"
+        app:layout_constraintStart_toStartOf="@+id/textView14" />
 
     <EditText
-        android:id="@+id/YAmb"
+        android:id="@+id/carrerahosp"
         android:layout_width="83dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/XAmb"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/callehosp"
+        app:layout_constraintStart_toEndOf="@+id/callehosp" />
 
     <EditText
-        android:id="@+id/codAmb"
+        android:id="@+id/codhosp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView10" />
 
     <Button
         android:id="@+id/regresarhosp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="28dp"
         android:text="regresar"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/callehosp" />
 
     <Button
         android:id="@+id/agregarHosp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="22dp"
         android:text="agregar"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regresarhosp" />
 
 </android.support.constraint.ConstraintLayout>
